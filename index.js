@@ -8,7 +8,7 @@ const inquirer = require("inquirer");
 
 // Hard code a connection
 
-const database = mysql.Connection({
+const config = mysql.Connection({
   host: "localhost",
   user: "root",
   password: "password",
