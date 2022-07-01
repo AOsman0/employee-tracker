@@ -58,7 +58,29 @@ const init = async () => {
     if (option === "view all employees") {
     }
     if (option === "add a role") {
+      //departments
       // add role questions so which role would you like to add
+      const addRoleQuestions = [
+        {
+          type: "input",
+          message: "What role do you want to add?",
+          name: "role",
+        },
+        {
+          type: "input",
+          name: "salary",
+          message: "What is the salary of this role?",
+        },
+        {
+          type: "list",
+          name: "departmentName",
+          message: "Which department do you want to add the new role to?",
+          choices: "department",
+        },
+      ];
+      const { role, salary, departmentName } = await inquirer.prompt(
+        addRoleQuestions
+      );
       // ask title , salary, decimals
       // get the 3 answers
       // concate the answers from inquirer
