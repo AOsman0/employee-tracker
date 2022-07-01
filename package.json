@@ -4,7 +4,7 @@
   "description": "this assignment involves building a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/AOsman0/employee-tracker#readme",
   "dependencies": {
-    "inquirer": "^9.0.0",
-    "mysql": "^2.18.1"
+    "dotenv": "^16.0.1",
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3"
   }
 }
