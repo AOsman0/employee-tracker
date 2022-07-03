@@ -1,5 +1,3 @@
-console.log("hello from node ");
-
 // require my sql
 const dotenv = require("dotenv");
 const mysql = require("mysql2");
@@ -84,7 +82,6 @@ const init = async () => {
         },
       ];
       const rolesAnswers = await inquirer.prompt(updatedRoles);
-      console.log(rolesAnswers);
 
       // concate the answers from inquirer
       const addRole = await executeQuery(
@@ -118,7 +115,6 @@ const init = async () => {
         },
       ];
       const employeeAnswers = await inquirer.prompt(updateEmployee);
-      console.log(employeeAnswers);
 
       // concate the answers from inquirer
       const addEmployee = await executeQuery(
@@ -169,13 +165,11 @@ const init = async () => {
         },
       ];
       const updateAnswers = await inquirer.prompt(questionsUpdate);
-      console.log(updateAnswers);
 
       const updateQuery = await executeQuery(
         `UPDATE employees SET role_id (${role_id} WHERE manager_id = ${manager_id})`
       );
 
-      console.log(updateQuery);
       // present user with list of roles.
       // which one they want to update
       //UPDATE employee SET role_id=${inqirer.value} WHERE id=${inquirer.id}
