@@ -129,6 +129,7 @@ const init = async () => {
     if (option === "update an employee role") {
       //get all employees
       const getAllEmployees = await executeQuery(allEmployees);
+      const getAllRoles = await executeQuery(allRoles);
       // then ask user to select one of employeees
       const questionsUpdate = [
         {
@@ -155,6 +156,11 @@ const init = async () => {
       const updateAnswers = await inquirer.prompt(questionsUpdate);
       console.log(updateAnswers);
 
+      const updateQuery = await executeQuery(
+        `UPDATE employees SET role_id (${role_id} WHERE manager_id = ${manager_id})`
+      );
+
+      console.log(updateQuery);
       // present user with list of roles.
       // which one they want to update
       //UPDATE employee SET role_id=${inqirer.value} WHERE id=${inquirer.id}
