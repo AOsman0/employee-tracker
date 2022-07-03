@@ -126,6 +126,21 @@ const init = async () => {
           `('${employeeAnswers.fistName}', '${employeeAnswers.lastName}', ${employeeAnswers.role_id},${employeeAnswers.manager_id})`
       );
     }
+    if (option === "add a department") {
+      const addDepartment = [
+        {
+          type: "input",
+          message: "What is the department you want to add",
+          name: "department_name",
+        },
+      ];
+      const addDepartments = await inquirer.prompt(addDepartment);
+      console.log(addDepartments);
+      const addAnotherDepartment = await executeQuery(
+        `INSERT INTO departments (department_name) VALUES ` +
+          `('${addDepartment.department_name}')`
+      );
+    }
     if (option === "update an employee role") {
       //get all employees
       const getAllEmployees = await executeQuery(allEmployees);
