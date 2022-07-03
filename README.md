@@ -20,17 +20,17 @@ npm run start on src folder
 
 ## Screenshots
 
-![screenshot1](./public/images/Screenshot%202022-06-24%20at%2021.01.26.png)
+![screenshot1](./assets/images/Screenshot%202022-07-03%20at%2014.55.23.png)
 
-![screenshot2](./public/images/Screenshot%202022-06-24%20at%2021.01.34.png)
+![screenshot2](./assets/images/Screenshot%202022-07-03%20at%2014.55.30.png)
 
-![screenshot3](./public/images/Screenshot%202022-06-24%20at%2021.01.43.png)
+![screenshot3](./assets/images/Screenshot%202022-07-03%20at%2014.55.37.png)
 
-![screenshot4](./public/images/Screenshot%202022-06-24%20at%2021.01.48.png)
+![screenshot4](./assets/images/Screenshot%202022-07-03%20at%2014.55.44.png)
 
 ## Video WalkThrough
 
-(https://drive.google.com/drive/folders/1oYYM_Jkp1NhQnJ1xfTPyw8RN_DieL31t?usp=sharing)
+(https://drive.google.com/drive/folders/1aSNAq3HgS9Z4U8Ebvqq2_dEM-sMtPTqW?usp=sharing)
 
 ## Technology Used
 
@@ -40,7 +40,6 @@ VSCode
 SQL
 NPM
 Node JS
-DotEnv
 
 ## Contact Me
 
