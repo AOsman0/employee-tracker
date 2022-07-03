@@ -5,7 +5,11 @@ const dotenv = require("dotenv");
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
 
-const { allDepartmentsQuery, allRoles } = require("../utils/queries");
+const {
+  allDepartmentsQuery,
+  allRoles,
+  allEmployees,
+} = require("../utils/queries");
 const initDatabase = require("./db");
 
 // Hard code a connection
@@ -56,40 +60,78 @@ const init = async () => {
       console.table(roles);
     }
     if (option === "view all employees") {
+      const employees = await executeQuery(allEmployees);
+      console.table(employees);
     }
     if (option === "add a role") {
       //departments
       // add role questions so which role would you like to add
-      const addRoleQuestions = [
+      const updatedRoles = [
         {
           type: "input",
-          message: "What role do you want to add?",
-          name: "role",
+          message: "What role do you want to add",
+          name: "title",
         },
         {
           type: "input",
           name: "salary",
-          message: "What is the salary of this role?",
+          message: "What is the salary of this role",
         },
         {
-          type: "list",
-          name: "departmentName",
-          message: "Which department do you want to add the new role to?",
-          choices: "department",
+          type: "input",
+          name: "department_id",
+          message: "Which department do you want to add the new role to",
         },
       ];
-      const { role, salary, departmentName } = await inquirer.prompt(
-        addRoleQuestions
-      );
-      // ask title , salary, decimals
-      // get the 3 answers
+      const rolesAnswers = await inquirer.prompt(updatedRoles);
+      console.log(rolesAnswers);
+
       // concate the answers from inquirer
-      // const addRole = await executeQuery("INSERT INTO roles (id,title,salary,department_id) VALUES(${answers.id,answers.title} );")
+      const addRole = await executeQuery(
+        `INSERT INTO roles (title,salary,department_id) VALUES ` +
+          `('${rolesAnswers.title}', ${rolesAnswers.salary}, ${rolesAnswers.department_id})`
+      );
     }
     if (option === "add an employee") {
+      //departments
+      // add role questions so which role would you like to add
+      const updateEmployee = [
+        {
+          type: "input",
+          message: "What is the first name of employee you want to add",
+          name: "firstName",
+        },
+        {
+          type: "input",
+          name: "lastName",
+          message: "What is the last name of employee you want to add",
+        },
+        {
+          type: "input",
+          name: "role_id",
+          message: "What is the role id you want to add",
+        },
+        {
+          type: "input",
+          name: "manager_id",
+          message: "What is the manager id you want to add",
+        },
+      ];
+      const employeeAnswers = await inquirer.prompt(updateEmployee);
+      console.log(employeeAnswers);
+
+      // concate the answers from inquirer
+      const addEmployee = await executeQuery(
+        `INSERT INTO employees (firstName,lastName,role_id,manager_id) VALUES ` +
+          `('${employeeAnswers.fistName}', '${employeeAnswers.lastName}', ${employeeAnswers.role_id},${employeeAnswers.manager_id})`
+      );
     }
     if (option === "update an employee role") {
-      // the user will tell you update from inquirer
+      //get all employees
+      // then ask user to select one of employeees
+      // present user with list of roles.
+      // which one they want to update
+      //UPDATE employee SET role_id=${inqirer.value} WHERE id=${inquirer.id}
     }
     if (option === "quit") {
       progress = false;
