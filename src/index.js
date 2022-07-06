@@ -167,7 +167,7 @@ const init = async () => {
       const updateAnswers = await inquirer.prompt(questionsUpdate);
 
       const updateQuery = await executeQuery(
-        `UPDATE employees SET role_id (${role_id} WHERE manager_id = ${manager_id})`
+        `UPDATE employees SET role_id = ${updateAnswers.role_id} WHERE manager_id = ${updateAnswers.manager_id}`
       );
 
       // present user with list of roles.
